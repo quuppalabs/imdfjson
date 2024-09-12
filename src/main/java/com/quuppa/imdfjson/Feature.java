@@ -1,6 +1,5 @@
 package com.quuppa.imdfjson;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -38,7 +37,7 @@ public abstract class Feature extends org.wololo.geojson.Feature {
 	public static boolean FAIL_ON_MISSING_PROPERTIES = false;
 	private static Logger logger = Logger.getLogger(Feature.class.getName());
 	
-    private final Map<String, Object> properties;
+    private final FeatureProperties properties;
 
     public Feature(
             @JsonProperty("geometry") Geometry geometry,
@@ -67,9 +66,8 @@ public abstract class Feature extends org.wololo.geojson.Feature {
             	else logger.warning(errorMessage);
         	}
         }
-        
         // don't use the geojson.Feature/properties but shadow it here to make sure it's always initialized
-        this.properties = properties == null ? new HashMap<>() : properties;
+        this.properties = properties == null ? new FeatureProperties() : new FeatureProperties(properties);
     	for (NullablePropertyKey defaultKey : defaultNullPropertyKeys) {
     		if (this.properties.containsKey(defaultKey.name())) continue;
     		this.properties.put(defaultKey.name(), null);
