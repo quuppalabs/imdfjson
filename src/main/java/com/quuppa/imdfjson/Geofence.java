@@ -2,7 +2,6 @@ package com.quuppa.imdfjson;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import org.wololo.geojson.Geometry;
@@ -18,7 +17,7 @@ public class Geofence extends Feature {
     public Geofence(
             @JsonProperty("id") Object id,
             @JsonProperty("geometry") Geometry geometry,
-            @JsonProperty("properties") Map<String,Object> properties) {
+            @JsonProperty("properties") FeatureProperties properties) {
         super(id, geometry, properties,
         		new RequiredPropertyKey[]{RequiredPropertyKey.category},
         		NullablePropertyKey.restriction, NullablePropertyKey.name,

@@ -2,7 +2,6 @@ package com.quuppa.imdfjson;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import org.wololo.geojson.Geometry;
@@ -26,7 +25,7 @@ public class Unit extends Feature {
     public Unit(
             @JsonProperty("id") Object id,
             @JsonProperty("geometry") Geometry geometry,
-            @JsonProperty("properties") Map<String,Object> properties) {
+            @JsonProperty("properties") FeatureProperties properties) {
         super(id, geometry, properties, 
         		new RequiredPropertyKey[]{RequiredPropertyKey.category, RequiredPropertyKey.level_id},
         		NullablePropertyKey.restriction, NullablePropertyKey.accessibility,

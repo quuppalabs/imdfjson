@@ -2,7 +2,6 @@ package com.quuppa.imdfjson;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import org.wololo.geojson.Geometry;
@@ -24,7 +23,7 @@ public class Level extends Feature {
     public Level(
             @JsonProperty("id") Object id,
             @JsonProperty("geometry") Geometry geometry,
-            @JsonProperty("properties") Map<String,Object> properties) {
+            @JsonProperty("properties") FeatureProperties properties) {
         super(id, geometry, properties, 
         		requiredPropertyKeys,
         		NullablePropertyKey.restriction,

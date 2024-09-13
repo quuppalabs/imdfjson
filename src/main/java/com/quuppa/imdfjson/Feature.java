@@ -1,6 +1,5 @@
 package com.quuppa.imdfjson;
 
-import java.util.Map;
 import java.util.logging.Logger;
 
 import org.wololo.geojson.Geometry;
@@ -41,7 +40,7 @@ public abstract class Feature extends org.wololo.geojson.Feature {
 
     public Feature(
             @JsonProperty("geometry") Geometry geometry,
-            @JsonProperty("properties") Map<String,Object> properties,
+            @JsonProperty("properties") FeatureProperties properties,
             RequiredPropertyKey[] requiredPropertyKeys,
             NullablePropertyKey...  defaultPropertyKeys) {
         this(null, geometry, properties, requiredPropertyKeys, defaultPropertyKeys);
@@ -51,7 +50,7 @@ public abstract class Feature extends org.wololo.geojson.Feature {
     public Feature(
             @JsonProperty("id") Object id,
             @JsonProperty("geometry") Geometry geometry,
-            @JsonProperty("properties") Map<String,Object> properties,
+            @JsonProperty("properties") FeatureProperties properties,
             RequiredPropertyKey[] requiredPropertyKeys,
             NullablePropertyKey...  defaultNullPropertyKeys) {
         super(id, geometry, null);
@@ -67,7 +66,7 @@ public abstract class Feature extends org.wololo.geojson.Feature {
         	}
         }
         // don't use the geojson.Feature/properties but shadow it here to make sure it's always initialized
-        this.properties = properties == null ? new FeatureProperties() : new FeatureProperties(properties);
+        this.properties = properties == null ? new FeatureProperties() : properties;
     	for (NullablePropertyKey defaultKey : defaultNullPropertyKeys) {
     		if (this.properties.containsKey(defaultKey.name())) continue;
     		this.properties.put(defaultKey.name(), null);
@@ -75,7 +74,7 @@ public abstract class Feature extends org.wololo.geojson.Feature {
     }
     
     @Override
-    public Map<String, Object> getProperties() {
+    public FeatureProperties getProperties() {
         return properties;
     }
     
