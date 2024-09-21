@@ -9,7 +9,7 @@ import org.wololo.geojson.Geometry;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Unit extends Feature {
+public class Unit extends NamedFeature {
 	public static Set<String> Categories = new HashSet<>(Arrays.asList(
 		"auditorium", "brick", "classroom", "column", "concrete", "conferenceroom", "drywall", "elevator", "escalator", 
 		"fieldofplay", "firstaid", "fitnessroom", "foodservice", "footbridge", "glass", "huddleroom", "kitchen", 
@@ -31,5 +31,5 @@ public class Unit extends Feature {
         		NullablePropertyKey.restriction, NullablePropertyKey.accessibility,
         		NullablePropertyKey.name, NullablePropertyKey.alt_name,  
         		NullablePropertyKey.display_point);
-    }
+    }    
 }

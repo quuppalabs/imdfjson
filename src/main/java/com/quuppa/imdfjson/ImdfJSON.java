@@ -15,3 +15,4 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 })
 public abstract class ImdfJSON extends GeoJSON {
 }
+

@@ -9,7 +9,7 @@ import org.wololo.geojson.Geometry;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Geofence extends Feature {
+public class Geofence extends NamedFeature {
 	public static Set<String> Categories = new HashSet<>(Arrays.asList(
 	"concourse", "geofence", "paidarea", "platform", "postsecurity", "presecurity", "terminal", "underconstruction"));
 	
@@ -24,5 +24,6 @@ public class Geofence extends Feature {
         		NullablePropertyKey.alt_name, NullablePropertyKey.correlation_id, 
         		NullablePropertyKey.display_point, NullablePropertyKey.building_ids, 
         		NullablePropertyKey.level_ids, NullablePropertyKey.parents);
-    }	
+    }
+
 }

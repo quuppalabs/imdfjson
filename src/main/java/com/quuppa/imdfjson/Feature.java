@@ -26,6 +26,7 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
   @JsonSubTypes.Type(value=Geofence.class, names= { "geofence", "Geofence" } ),
   @JsonSubTypes.Type(value=Detail.class, names= { "detail", "Detail" } ),
   @JsonSubTypes.Type(value=Opening.class, names= { "opening", "Opening" } ),
+  @JsonSubTypes.Type(value=Relationship.class, names= { "relationship", "Relationship" } ),
   @JsonSubTypes.Type(value=Unit.class, names= { "unit", "Unit" } )
 } )
 
@@ -36,7 +37,7 @@ public abstract class Feature extends org.wololo.geojson.Feature {
 	public static boolean FAIL_ON_MISSING_PROPERTIES = false;
 	private static Logger logger = Logger.getLogger(Feature.class.getName());
 	
-    private final FeatureProperties properties;
+    private FeatureProperties properties;
 
     public Feature(
             @JsonProperty("geometry") Geometry geometry,
@@ -77,16 +78,19 @@ public abstract class Feature extends org.wololo.geojson.Feature {
     public FeatureProperties getProperties() {
         return properties;
     }
+    public void setProperties(FeatureProperties properties) {
+    	this.properties = properties;
+    }
     
     private String name;
     
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
+//	public String getName() {
+//		return name;
+//	}
+//
+//	public void setName(String name) {
+//		this.name = name;
+//	}
     
 	// Since the feature_type describes the actual feature type 
 	// and Geometry has its own type, Feature's type is always Feature

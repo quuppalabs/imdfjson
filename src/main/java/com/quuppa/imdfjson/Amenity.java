@@ -5,7 +5,7 @@ import org.wololo.geojson.Geometry;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Amenity extends Feature {
+public class Amenity extends NamedFeature {
     @JsonCreator
     public Amenity(
             @JsonProperty("id") Object id,
