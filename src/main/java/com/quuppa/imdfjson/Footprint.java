@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 // Footprint doesn't have alt_name property but does have a name, really?
-public class Footprint extends NamedFeature {
+public class Footprint extends Feature {
     @JsonCreator
     public Footprint(
             @JsonProperty("id") Object id,

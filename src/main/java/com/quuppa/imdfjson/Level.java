@@ -30,4 +30,23 @@ public class Level extends Feature {
         		NullablePropertyKey.display_point, NullablePropertyKey.address_id, 
         		NullablePropertyKey.building_ids);
     }	
+    
+	@JsonIgnore
+	public Label getName() {
+		return (Label)getProperties().get(NullablePropertyKey.name.name());
+	}
+	
+	public void setName(Label name) {
+		getProperties().put(NullablePropertyKey.name.name(), name);
+	}
+	
+	@JsonIgnore
+	public Label getShortName() {
+		return (Label)getProperties().get(NullablePropertyKey.short_name.name());
+	}
+	
+	public void setShortName(Label name) {
+		getProperties().put(NullablePropertyKey.short_name.name(), name);
+	}
+    
 }

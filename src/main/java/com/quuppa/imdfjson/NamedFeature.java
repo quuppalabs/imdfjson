@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class NamedFeature extends Feature {
+public abstract class NamedFeature extends Feature {
 
     public NamedFeature(
             @JsonProperty("geometry") Geometry geometry,
