@@ -16,7 +16,7 @@ public class FeatureProperties extends HashMap<String,Object> {
 	
 	@Override
 	public Object put(String key, Object value) {
-		// "hand" deserialize FeatureReferences from String so we can keep this extensible but still support typed FeatureReferences
+		// "hand" deserialize names from String so we can keep this extensible but still support typed Labels
 
 		if (key.equals(PropertyKey.name.name()) && value != null && !(value instanceof Map)) {
 			// this would be misstructured IMDF but are we really going to error just because name is not a map? 
