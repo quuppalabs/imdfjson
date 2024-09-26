@@ -22,7 +22,7 @@ public class FeatureProperties extends HashMap<String,Object> {
 			// this would be misstructured IMDF but are we really going to error just because name is not a map? 
 			Label nameLabel = new Label();
 			// "guess" locale
-			nameLabel.put(Locale.forLanguageTag("en"), value.toString());
+			nameLabel.put(Locale.ENGLISH, value.toString());
 			return super.put(key, nameLabel);
 		}
 		// A generic object map should be of type LinkedHashMap
