@@ -8,14 +8,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public abstract class NamedFeature extends Feature {
 
-    public NamedFeature(
-            @JsonProperty("geometry") Geometry geometry,
-            @JsonProperty("properties") FeatureProperties properties,
-            RequiredPropertyKey[] requiredPropertyKeys,
-            NullablePropertyKey...  defaultPropertyKeys) {
-        this(null, geometry, properties, requiredPropertyKeys, defaultPropertyKeys);
-    }
-    
     @JsonCreator
     public NamedFeature(
             @JsonProperty("id") Object id,
@@ -23,9 +15,8 @@ public abstract class NamedFeature extends Feature {
             @JsonProperty("properties") FeatureProperties properties,
             RequiredPropertyKey[] requiredPropertyKeys,
             NullablePropertyKey...  defaultNullPropertyKeys) {
-        super(null, geometry, properties, requiredPropertyKeys, defaultNullPropertyKeys);
+        super(id, geometry, properties, requiredPropertyKeys, defaultNullPropertyKeys);
     }
-    
     
 	@JsonIgnore
 	public Label getName() {

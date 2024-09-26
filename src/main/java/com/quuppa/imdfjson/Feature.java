@@ -39,14 +39,6 @@ public abstract class Feature extends org.wololo.geojson.Feature {
 	
     private FeatureProperties properties;
 
-    public Feature(
-            @JsonProperty("geometry") Geometry geometry,
-            @JsonProperty("properties") FeatureProperties properties,
-            RequiredPropertyKey[] requiredPropertyKeys,
-            NullablePropertyKey...  defaultPropertyKeys) {
-        this(null, geometry, properties, requiredPropertyKeys, defaultPropertyKeys);
-    }
-    
     @JsonCreator
     public Feature(
             @JsonProperty("id") Object id,
