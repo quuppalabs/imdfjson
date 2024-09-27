@@ -19,14 +19,20 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 	    property = "feature_type"
 	)
 @JsonSubTypes( {
-  @JsonSubTypes.Type(value=Venue.class, names = { "venue", "Venue" } ),
+  @JsonSubTypes.Type(value=Address.class, names = { "address", "Address" } ),
+  @JsonSubTypes.Type(value=Amenity.class, names = { "amenity", "Amenity" } ),
   @JsonSubTypes.Type(value=Building.class, names= { "building", "Building" } ),
-  @JsonSubTypes.Type(value=Level.class, names= { "level" , "Level"} ),
-  @JsonSubTypes.Type(value=Section.class, names= { "section", "Section" } ),
-  @JsonSubTypes.Type(value=Geofence.class, names= { "geofence", "Geofence" } ),
   @JsonSubTypes.Type(value=Detail.class, names= { "detail", "Detail" } ),
+  @JsonSubTypes.Type(value=Fixture.class, names= { "fixture", "Fixture" } ),
+  @JsonSubTypes.Type(value=Footprint.class, names= { "footprint", "Footprint" } ),
+  @JsonSubTypes.Type(value=Geofence.class, names= { "geofence", "Geofence" } ),
+  @JsonSubTypes.Type(value=Kiosk.class, names = { "kiosk", "Kiosk" } ),
+  @JsonSubTypes.Type(value=Level.class, names= { "level" , "Level"} ),
+  @JsonSubTypes.Type(value=Occupant.class, names= { "occupant", "Occupant" } ),
   @JsonSubTypes.Type(value=Opening.class, names= { "opening", "Opening" } ),
   @JsonSubTypes.Type(value=Relationship.class, names= { "relationship", "Relationship" } ),
+  @JsonSubTypes.Type(value=Section.class, names= { "section", "Section" } ),
+  @JsonSubTypes.Type(value=Venue.class, names = { "venue", "Venue" } ),
   @JsonSubTypes.Type(value=Unit.class, names= { "unit", "Unit" } )
 } )
 
