@@ -1,6 +1,6 @@
 package com.quuppa.imdfjson;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.Locale;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -12,12 +12,12 @@ public class ImdfManifest {
 	public static final String VERSION = "1.0.0";
 	
 	private String version;
-	private Date created;
+	private Instant created;
 	private String generated_by;
 	private Locale language;
 	private String[] extensions;
 	
-	public ImdfManifest(@JsonProperty("version") String version, @JsonProperty("created") Date created, 
+	public ImdfManifest(@JsonProperty("version") String version, @JsonProperty("created") Instant created, 
 			@JsonProperty("generated_by") String generated_by, @JsonProperty("language") Locale language, 
 			@JsonProperty("extensions") String[] extensions) {
 		this.version = version;
@@ -30,9 +30,11 @@ public class ImdfManifest {
 	public String getVersion() {
 		return version;
 	}
-	
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm'Z'")
-	public Date getCreated() {
+
+// We could specify multiple patterns
+//	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "[yyyy-MM-dd'T'HH:mm:ss.SSS'Z'][yyyy-MM-dd'T'HH:mm'Z']")
+	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS'Z']", timezone = JsonFormat.DEFAULT_TIMEZONE)
+	public Instant getCreated() {
 		return created;
 	}
 	public String getGenerated_by() {
@@ -45,7 +47,7 @@ public class ImdfManifest {
 		return extensions;
 	}
 
-	public void setCreated(Date created) {
+	public void setCreated(Instant created) {
 		this.created = created;
 	}
 
