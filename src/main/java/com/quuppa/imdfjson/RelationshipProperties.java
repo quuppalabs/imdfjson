@@ -33,6 +33,7 @@ public class RelationshipProperties extends FeatureProperties {
 			List<FeatureReference> refs = new ArrayList<>();
 			@SuppressWarnings("unchecked")
 			List<Map<?,?>> valueList = (List<Map<?,?>>)value;
+			if (valueList.size() > 0 && valueList.get(0) instanceof FeatureReference) return super.put(key, value);
 			for (Map<?,?> values : valueList) {
 				refs.add(values2featureType(values));
 			}
