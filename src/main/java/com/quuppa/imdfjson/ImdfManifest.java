@@ -6,6 +6,7 @@ import java.util.Locale;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonTypeName("manifest")
 public class ImdfManifest {
@@ -31,9 +32,14 @@ public class ImdfManifest {
 		return version;
 	}
 
-// We could specify multiple patterns
-//	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "[yyyy-MM-dd'T'HH:mm:ss.SSS'Z'][yyyy-MM-dd'T'HH:mm'Z']")
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[.SSS'Z']", timezone = JsonFormat.DEFAULT_TIMEZONE)
+
+	// Deserializes correctly but doesn't write the zone even with WRITE_DATES_WITH_ZONE_ID because pattern drives the serialization as well
+//	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss[[Z][.SSSZ][XXX][.SSSXXX]]", timezone = JsonFormat.DEFAULT_TIMEZONE, with=JsonFormat.Feature.WRITE_DATES_WITH_ZONE_ID)
+
+	// The issue is that we want to enforce serializing a zone, but support deserializing either with zone or offset and it seems
+	// it's impossible to write a pattern that describes that	
+	@JsonFormat(shape = JsonFormat.Shape.STRING, timezone = JsonFormat.DEFAULT_TIMEZONE, with=JsonFormat.Feature.WRITE_DATES_WITH_ZONE_ID)
+	@JsonDeserialize(using = ZoneOffsetLenientInstantDeserializer.class)
 	public Instant getCreated() {
 		return created;
 	}
