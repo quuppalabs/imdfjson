@@ -4,7 +4,7 @@
 	<artifactId>imdfjson</artifactId>
 	<packaging>jar</packaging>
 	<name>IMDF Json</name>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
 	<description>Jackson serializable IMDF base classes</description>
 	<url>https://github.com/quuppalabs/imdfjson</url>
 
@@ -32,7 +32,7 @@
 	
 	<scm>
 		<connection>scm:git:git@github.com:quuppalabs/imdfjson.git</connection>
-		<tag>HEAD</tag>
+		<tag>imdfjson-1.0.2</tag>
 		<url>https://github.com/quuppalabs/imdfjson</url>
 	</scm>
 	
