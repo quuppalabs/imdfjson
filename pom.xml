@@ -41,6 +41,7 @@
 			<id>quuppalabs-site</id>
 			<url>gitsite:git@github.com/quuppalabs/imdfjson.git</url>
 		</site>
+		<!-- Handled by central-publishing-maven-plugin 
 		<snapshotRepository>
 			<id>ossrh</id>
 			<url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
@@ -49,6 +50,7 @@
 			<id>ossrh</id>
 			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>		
+		-->
 	</distributionManagement>
 	
 	<build>
@@ -181,6 +183,18 @@
 								</goals>
 							</execution>
 						</executions>
+					</plugin>
+					<!-- central-publishing plugin really replaces default deployment behavior, only use for releases -->
+					<plugin>
+						<groupId>org.sonatype.central</groupId>
+						<artifactId>central-publishing-maven-plugin</artifactId>
+						<version>0.8.0</version>
+						<extensions>true</extensions>
+						<configuration>
+							<autoPublish>true</autoPublish>
+							<waitUntil>validated</waitUntil>                  
+							<publishingServerId>central</publishingServerId>
+						</configuration>
 					</plugin>
 				</plugins>
 			</build>
