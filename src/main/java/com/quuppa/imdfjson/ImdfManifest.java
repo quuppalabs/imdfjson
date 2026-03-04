@@ -3,12 +3,16 @@ package com.quuppa.imdfjson;
 import java.time.Instant;
 import java.util.Locale;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonTypeName("manifest")
+// Let's ignore unknown properties to allow for forward compatibility
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class ImdfManifest {
 	public static final String VERSION = "1.0.0";
 	
@@ -19,7 +23,7 @@ public class ImdfManifest {
 	private String[] extensions;
 	
 	public ImdfManifest(@JsonProperty("version") String version, @JsonProperty("created") Instant created, 
-			@JsonProperty("generated_by") String generated_by, @JsonProperty("language") Locale language, 
+			@JsonProperty("generated_by") @JsonAlias("generated-by") String generated_by, @JsonProperty("language") Locale language, 
 			@JsonProperty("extensions") String[] extensions) {
 		this.version = version;
 		this.setCreated(created);
