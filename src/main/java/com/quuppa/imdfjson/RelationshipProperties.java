@@ -8,7 +8,7 @@ public class RelationshipProperties extends FeatureProperties {
 	private static final long serialVersionUID = 1L;
 
 	public enum PropertyKey {
-		origin, intermediary, destination; 
+		origin, intermediary, destination, direction, category; 
 	}
 
 	@Override
