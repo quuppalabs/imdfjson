@@ -7,7 +7,6 @@ import org.wololo.geojson.Geometry;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -45,9 +44,9 @@ public abstract class Feature extends org.wololo.geojson.Feature {
     private FeatureProperties properties;
 
     public Feature(
-            @JsonProperty("id") Object id,
-            @JsonProperty("geometry") Geometry geometry,
-            @JsonProperty("properties") FeatureProperties properties,
+            Object id,
+            Geometry geometry,
+            FeatureProperties properties,
             RequiredPropertyKey[] requiredPropertyKeys,
             NullablePropertyKey...  defaultNullPropertyKeys) {
         super(id, geometry, null);
