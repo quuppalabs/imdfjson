@@ -4,7 +4,6 @@ import java.util.logging.Logger;
 
 import org.wololo.geojson.Geometry;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -45,7 +44,6 @@ public abstract class Feature extends org.wololo.geojson.Feature {
 	
     private FeatureProperties properties;
 
-    @JsonCreator
     public Feature(
             @JsonProperty("id") Object id,
             @JsonProperty("geometry") Geometry geometry,
