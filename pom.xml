@@ -4,7 +4,7 @@
 	<artifactId>imdfjson</artifactId>
 	<packaging>jar</packaging>
 	<name>IMDF Json</name>
-	<version>1.0.4</version>
+	<version>1.0.5-SNAPSHOT</version>
 	<description>Jackson serializable IMDF base classes</description>
 	<url>https://github.com/quuppalabs/imdfjson</url>
 
